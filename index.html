@@ -6,11 +6,19 @@
     <title>𓉾𓉾𓉾</title>
     <style>
         /* Add your custom styles here */
+        @font-face {
+            font-family: 'AON-09';
+            src: url('AON-09 v0.8.otf') format('opentype'); /* Specify the path to your font file */
+            font-weight: normal;
+            font-style: normal;
+        }
+
         body {
-            font-family: 'Franklin Gothic Medium';
+            font-family: 'AON-09', sans-serif; /* Use the custom font */
             margin: 0;
             padding: 0;
             overflow: hidden; /* Hide overflow to prevent scrollbar due to the video */
+            cursor: url('glass.busy.ani'), auto; /* Set animated cursor from local file */
         }
 
         #video-background {
@@ -30,10 +38,41 @@
             text-align: center;
         }
 
-        /* Center and enlarge the paragraph text */
-        main p, main p5 {
+        /* Center and enlarge the paragraph text with simple glowing effect */
+        main p, main .p5-text {
             font-size: 3em;
-            font-weight: bold; /* Make the text bold */
+            font-weight: lighter; /* Make the text lighter */
+            background-image: linear-gradient(to right, #880707, #7e1515);
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: glow 1.5s ease-in-out infinite;
+            user-select: none; /* Disable text selection */
+        }
+
+        /* Define the simple glow animation */
+        @keyframes glow {
+            0% {
+                color: #000000; /* Initial color (red in this example) */
+                text-shadow: 0 0 10px #ff0000bb; /* Simple Glowing effect */
+            }
+            50% {
+                color: #4d1b1b; /* Midway color (orange in this example) */
+                text-shadow: 0 0 20px #7900003d; /* Simple Glowing effect */
+            }
+            100% {
+                color: #331717; /* Final color (red in this example) */
+                text-shadow: 0 0 10px #9c00003e; /* Simple Glowing effect */
+            }
+        }
+
+        /* Additional Advanced CSS Effects */
+        .animated-text {
+            animation: bounce 2s infinite;
+        }
+
+        .three-d-text {
+            transform: perspective(1000px) rotateX(30deg);
         }
     </style>
 </head>
@@ -44,29 +83,18 @@
         Your browser does not support the video tag.
     </video>
 
-    <!-- Add the audio element -->
-    <audio id="audio" autoplay muted>
-        <!-- Replace 'hide.wav' with the actual audio file name -->
-        <source src="hide.wav" type="audio/wav">
-        Your browser does not support the audio tag.
-    </audio>
-
     <main>
-        <p>𓆲 𓆚 𓃾 </p>
-        <p5>𓃚</p5>
+        <p class="animated-text three-d-text">𓆲  8 𓆚  𓃚</p>
+        <p class="animated-text three-d-text p5-text">𓃾</p>
     </main>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Get the video and audio elements
+            // Get the video element
             var videoBackground = document.getElementById('video-background');
-            var audio = document.getElementById('audio');
 
             // Uncomment the line below and replace 'your-video.mp4' with the actual video file path
             // videoBackground.src = 'your-video.mp4';
-
-            // Uncomment the line below and replace 'hide.wav' with the actual audio file path
-            // audio.src = 'hide.wav';
         });
     </script>
 </body>
